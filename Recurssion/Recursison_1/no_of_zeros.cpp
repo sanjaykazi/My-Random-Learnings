@@ -14,6 +14,8 @@ int zeros(int n){
     return small;
   }
 }
+
+
 int main()
 {
   int n;
