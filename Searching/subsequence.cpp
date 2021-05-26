@@ -15,9 +15,10 @@ void sub_print1(char input[], char output[], int i){
    cout<<output<<" "<<endl;
    return;
  }
+ sub_print1(input + 1, output, i);
  output[i] = input[0];
  sub_print1(input + 1, output, i+1);
- sub_print1(input + 1, output, i);
+ 
 }
 
 
