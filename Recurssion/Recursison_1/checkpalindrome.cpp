@@ -8,7 +8,7 @@ bool isPalindrome(int arr[], int s, int e){
   }else{
     return false;
   }
-  return isPalindrome(arr, s++, e--);
+  return isPalindrome(arr, s+1, e-1);
 }
 
 
