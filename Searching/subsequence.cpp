@@ -1,13 +1,15 @@
 #include <iostream>
 #include<string>
+#include<vector>
 using namespace std;
-void sub_print(string input, string output){
+void sub_print(string input, string output, vector<string> &v){
  if(input.length() == 0){
    cout<<output<<" "<<endl;
+   v.push_back(output);
    return;
  }
- sub_print(input.substr(1), output + input[0]);
- sub_print(input.substr(1), output);
+ sub_print(input.substr(1), output + input[0], v);
+ sub_print(input.substr(1), output, v);
 }
 void sub_print1(char input[], char output[], int i){
  if(input[0] == '\0'){
@@ -22,8 +24,11 @@ void sub_print1(char input[], char output[], int i){
 }
 
 
+
+
 int main()
 {
+  vector<string> vec;
   char san1[100];
   char out1[10];
   string san;
@@ -33,7 +38,11 @@ int main()
   cout<<"enter the char array:"<<endl;
   cin>>san1;
   cout << "below are the subsequence of: "<<san << endl;
-  sub_print(san,out);
+  sub_print(san,out,vec);
   sub_print1(san1,out1,0);
+  for(int i = 0; i<vec.size();i++){
+    cout<<vec[i]<<"->";
+  }
   return 0;
+
 }
