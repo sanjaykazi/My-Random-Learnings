@@ -23,7 +23,7 @@ int main()
   cout<<"EWnter the no of wheels in hanoi tower game:"<<endl;
   cin>>n;
   cout<<"To move the all discs on to the destination tower we need "<<towerOfHanoi(n)<<" moves."<<endl;
-  toh_step(n,'A','B','C');
+  toh_step(n,'A','C','B');
   
   
   return 0;
