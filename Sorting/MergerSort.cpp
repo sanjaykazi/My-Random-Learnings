@@ -30,6 +30,16 @@ void mergeArray(int x[], int y[], int a[], int s, int e){
   }
 }
 
+int solve(int A) {
+    int ans = A/6;
+    if(A % 6 == 1){
+        ans = ans*2 + 1;
+    }else{
+        ans = ans*2;
+    }
+    return ans;
+}
+
 void mergerSort(int arr[], int s, int e){
   if(s>=e){
     return;
@@ -48,10 +58,11 @@ void mergerSort(int arr[], int s, int e){
 }
 
 int main(){
-  int arr[] = {1,6,5,7,3,4,9};
-  mergerSort(arr,0,6);
-  for(int i = 0; i< 7; i++){
-    cout<<arr[i]<<" ";
-  }
+  // int arr[] = {1,6,5,7,3,4,9};
+  // mergerSort(arr,0,6);
+  // for(int i = 0; i< 7; i++){
+  //   cout<<arr[i]<<" ";
+  // }
+  cout<<solve(19);
   return 0;
 }
