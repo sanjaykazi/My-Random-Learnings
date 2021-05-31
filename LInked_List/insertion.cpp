@@ -75,6 +75,32 @@ void iPrint(Node *head, int x){
     }
     cout<<temp->data<<" is present at "<<x<<" the index."<<endl;
 }
+Node* insertionIthPosition(Node *head, int i, int data){
+    if(i < 0){
+        return head;
+    }
+    if(i == 0){
+        Node *n = new Node(data);
+        n->next = head;
+        head = n;
+        return head;
+    }
+    Node *cpy = head;
+    int count = 1;
+    while(count <= i-1 && head){
+        head = head->next;
+        count++;
+    }
+    if(head){
+        // first attach the new node to the last part as we'll loose connection with it if we do it 
+        // other way round
+        Node *n = new Node(data);
+        n->next = head->next;
+        head->next = n;
+        return cpy;
+    }
+    return cpy;
+}
 int main()
 {
     Node *nx = takeInput();
@@ -82,6 +108,8 @@ int main()
     cout << endl;
     cout << "Lengthh of the given linked list is: " << length(nx) << endl;
     iPrint(nx, 2);
-
+    cout<<endl;
+    nx = insertionIthPosition(nx, 0, 49);
+    print(nx);
     return 0;
 }
