@@ -66,6 +66,7 @@ void iPrint(Node *head, int x){
     }
     if(x < 0 || x >= len){
         cout<<"This is not a valid index for the given linked list."<<endl;
+        return;
     }
     for(int i=0; i<x; i++){
         temp = temp->next;
@@ -78,7 +79,7 @@ int main()
     print(nx);
     cout << endl;
     cout << "Lengthh of the given linked list is: " << length(nx) << endl;
-    iPrint(nx, 4);
+    iPrint(nx, 2);
 
     return 0;
 }
