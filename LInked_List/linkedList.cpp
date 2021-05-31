@@ -33,6 +33,20 @@ int main(){
     n4.next = &n5;
     cout<<endl;
     print(head);
+    cout<<endl;
+    // dynamica
+    Node *n6 = new Node(11);
+    Node *n7 = new Node(12);
+    Node *n8 = new Node(13);
+    Node *n9 = new Node(14);
+    Node *n10 = new Node(15);
+
+    n6->next = n7;
+    n7->next = n8;
+    n8->next = n9;
+    n9->next = n10;
+
+    print(n6);
     // cout<<n1.data<<" "<<n2.data<<endl;
 
     // Node *head = &n1;
