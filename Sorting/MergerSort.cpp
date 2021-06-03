@@ -1,68 +1,120 @@
+// { Driver Code Starts
 #include<iostream>
+
 using namespace std;
 
-void mergeArray(int x[], int y[], int a[], int s, int e){
-  int mid = (s+e)/2;
-  int i = s;
-  int j = mid+1;
-  int k = s;
-  while(i <= mid && j <= e){
-    if(x[i] < y[j]){
-      a[k] = x[i];
-      i++;
-      k++;
-    }
-    else{
-      a[k] = y[j];
-      j++;
-      k++;
-    }
-  }
-  while(i<=mid){
-    a[k] = x[i];
-      k++;
-      i++;
-  }
-  while(j<=e){
-    a[k] = y[j];
-      k++;
-      j++;
-  }
+struct Node {
+	int data;
+	struct Node* next;
+	
+	Node(int x){
+	    data = x;
+	    next = NULL;
+	}
+	
+};
+
+void append(struct Node** headRef, int newData)
+{
+	struct Node* new_node = new Node(newData);
+	struct Node *last = *headRef;
+	if (*headRef == NULL)
+	{
+	    *headRef = new_node;
+	    return;
+	}
+	while (last->next != NULL)
+		last = last->next;
+	last->next = new_node;
+	return;
 }
 
-int solve(int A) {
-    int ans = A/6;
-    if(A % 6 == 1){
-        ans = ans*2 + 1;
-    }else{
-        ans = ans*2;
+int modularNode(Node* head, int k);
+
+// Driver program to test above
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--){
+        struct Node* head = NULL;
+        int n, tmp, k;
+        cin>>n;
+        while(n--){
+            cin>>tmp;
+            append(&head, tmp);
+        }
+        cin>>k;
+        cout<<modularNode(head, k)<<endl;
     }
-    return ans;
+	return 0;
 }
+// } Driver Code Ends
 
-void mergerSort(int arr[], int s, int e){
-  if(s>=e){
-    return;
-  }
-  int mid = (s+e)/2;
-  int x[100],y[100];
-  for(int i = s; i<=mid;i++){
-    x[i] = arr[i];
-  }
-  for(int i = mid+1; i<=e;i++){
-    y[i] = arr[i];
-  }
-  mergerSort(x,s,mid);
-  mergerSort(y,mid+1,e);
-  mergeArray(x,y,arr,s,e);
+
+/*Struture of the node of the linked list is as:
+
+struct Node {
+	int data;
+	struct Node* next;
+	
+	Node(int x){
+	    data = x;
+	    next = NULL;
+	}
+	
+};
+*/
+// Your task is to complete the function
+// function should return the modular Node
+// if no such node is present then return -1
+int length(Node *head){
+    if(head == NULL){
+        return 0;
+    }
+    int count = 0;
+    while(head){
+        count++;
+        head = head->next;
+    }
+    return count;
 }
-
-int main(){
-  // int arr[] = {1,6,5,7,3,4,9};
-  // mergerSort(arr,0,6);
-  // for(int i = 0; i< 7; i++){
-  //   cout<<arr[i]<<" ";
-  // }
-  cout<<solve(19);
-  return 0;
+void reverse(Node *head)
+    {
+        // Initialize current, previous and
+        // next pointers
+        Node* current = head;
+        Node *prev = NULL, *next = NULL;
+ 
+        while (current != NULL) {
+            // Store next
+            next = current->next;
+ 
+            // Reverse current node's pointer
+            current->next = prev;
+ 
+            // Move pointers one position ahead.
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+int modularNode(Node* head, int k)
+{
+	// Code here
+	reverse(head);
+	int len = length(head);
+	if(head == NULL){
+	    return 0;
+	}
+	if(k > len){
+	    return -1;
+	}
+	int res = 0;
+	while(head){
+	    if(head->data % k == 0){
+	        res = head->data;
+	    }
+	}
+	return res;
 }
