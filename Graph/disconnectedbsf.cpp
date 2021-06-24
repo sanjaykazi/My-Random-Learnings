@@ -39,13 +39,16 @@ void BSF(vector<vector<int>> v)
 {
   int n = v.size();
   vector<bool> b(n, false);
+  int count = 0;
   for (int i = 0; i < n; i++)
   {
     if (b[i] == false)
     {
+      count++;
       printBSF(v, i, b);
     }
   }
+  cout << "Number of disconnected components are: " << count << endl;
 }
   int main()
   {
