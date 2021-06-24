@@ -17,13 +17,17 @@ void printDSF(vector<vector<int>> v, int sv, vector<bool> &b)
 void DSF(vector<vector<int>> v){
   int n = v.size();
   vector<bool> b(n,false);
+  int count = 0;
   for(int i = 0; i<n; i++){
     if(b[i] == false){
+      count++;
       printDSF(v,i,b);
     }
+    
   }
-
-} int main()
+  cout << "Number of disconnected components are: " << count << endl;
+} 
+int main()
 {
   int n, e;
   cin >> n >> e;
@@ -39,3 +43,4 @@ void DSF(vector<vector<int>> v){
   DSF(matrix);
   return 0;
 }
+// 8 6 0 2 0 4 2 4 2 3 1 5 6 7
