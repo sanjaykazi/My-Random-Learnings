@@ -7,7 +7,7 @@
 - x | ~(x + 1) = extracts the lowest cleared bit of x (all others are set).
 - x | (x - (1 << n)) = x, with the run of cleared bits (possibly length 0) starting at bit n set.
 - x | ~(x - (1 << n)) = the lowest run of cleared bits (possibly length 0) in x, starting at bit n are the only clear bits.
-
+#
 # My-Random-Learnings
 I am interested in these stuffs.
 ### AND (&)
